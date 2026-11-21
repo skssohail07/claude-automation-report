@@ -11,3 +11,4 @@ annotation PBI_ProTooling = ["DevMode"]
 ref table Department
 ref table Employee
 ref table Date
+ref table HRCase

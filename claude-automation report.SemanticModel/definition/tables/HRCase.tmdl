@@ -1,0 +1,70 @@
+table HRCase
+	lineageTag: 1eb2c1ca-14b5-473e-997d-52a47ab1cb32
+
+	column CaseID
+		dataType: int64
+		isKey
+		isHidden
+		lineageTag: 4baf8433-f5c1-40ea-bde4-13fb864df580
+		summarizeBy: none
+		sourceColumn: CaseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeptID
+		dataType: int64
+		isHidden
+		lineageTag: c9e22d3e-f72c-462e-b8dd-7b401528af13
+		summarizeBy: none
+		sourceColumn: DeptID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CaseType
+		dataType: string
+		lineageTag: 4856a4fd-a6ae-43df-bb71-1e25138d7416
+		summarizeBy: none
+		sourceColumn: CaseType
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: c5f38a3c-9a52-4831-a3eb-bc398215ce6e
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DaysToClose
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 863c7390-3e5d-4ccc-8cfa-47c497821cbd
+		summarizeBy: sum
+		sourceColumn: DaysToClose
+
+		annotation SummarizationSetBy = Automatic
+
+	column OnTime
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c57dc948-2eda-4fd0-ac96-da2a6e26c231
+		summarizeBy: sum
+		sourceColumn: OnTime
+
+		annotation SummarizationSetBy = Automatic
+
+	partition HRCase = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "hr_cases.csv"), [Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"CaseID", Int64.Type}, {"DeptID", Int64.Type}, {"CaseType", type text}, {"OpenDate", type date}, {"DaysToClose", Int64.Type}, {"OnTime", Int64.Type}}, "en-US")
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

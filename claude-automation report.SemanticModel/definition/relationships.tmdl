@@ -1,0 +1,11 @@
+relationship 968b19b3-3b3a-4a00-b40a-7de94925c12f
+	fromColumn: Employee.DeptID
+	toColumn: Department.DeptID
+
+relationship 32a448fa-63bf-4cfb-8584-3ccaffc63431
+	fromColumn: HRCase.DeptID
+	toColumn: Department.DeptID
+
+relationship 0308315b-46bf-426c-8a02-3e5730ba2c4b
+	fromColumn: HRCase.OpenDate
+	toColumn: Date.Date
