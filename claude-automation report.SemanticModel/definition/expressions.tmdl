@@ -1,0 +1,4 @@
+expression DataFolder = "C:\Users\SohailSK\Downloads\testmodelreport-dashboard\data\csv\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 2bae4a51-6b8d-4341-baf6-741304523448
+
+	annotation PBI_ResultType = Text
