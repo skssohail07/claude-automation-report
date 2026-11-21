@@ -1,0 +1,48 @@
+table Department
+	lineageTag: 562f9178-5773-4033-858e-9d8f3af2de26
+
+	column DeptID
+		dataType: int64
+		isKey
+		isHidden
+		lineageTag: 9a93458a-06f1-4c1d-9ea2-9a6054f01cf0
+		summarizeBy: none
+		sourceColumn: DeptID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeptName
+		dataType: string
+		lineageTag: 4d89b2c1-0037-4a0f-9805-379d1a1abfc4
+		summarizeBy: none
+		sourceColumn: DeptName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Budget
+		dataType: int64
+		formatString: #,0
+		lineageTag: 890b8900-5c0e-4e1a-ae35-207fe8f5f296
+		summarizeBy: sum
+		sourceColumn: Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Department Hierarchy'
+		lineageTag: e1ac518e-5f91-4a60-ba4d-e67a959e9b34
+
+		level DeptName
+			lineageTag: be44cb3c-6475-4c09-9558-4623247c8165
+			column: DeptName
+
+	partition Department = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "departments.csv"), [Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"DeptID", Int64.Type}, {"DeptName", type text}, {"Budget", Int64.Type}}, "en-US")
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

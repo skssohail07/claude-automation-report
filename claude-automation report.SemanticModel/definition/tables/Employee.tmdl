@@ -1,0 +1,87 @@
+table Employee
+	lineageTag: abbda40e-6d47-4505-bacd-22ad73e48215
+
+	column EmpID
+		dataType: int64
+		isKey
+		isHidden
+		lineageTag: 24132e01-a3ee-44f2-a530-e67e64f50592
+		summarizeBy: none
+		sourceColumn: EmpID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: 31aa5550-3f59-4f67-ac23-e7a5428ba992
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 9298c1f7-5bf4-4d6d-b3f1-03d27e33c221
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column DeptID
+		dataType: int64
+		isHidden
+		lineageTag: 6fd2d5fb-ec0f-443a-9e48-ef5a49a7b6eb
+		summarizeBy: none
+		sourceColumn: DeptID
+
+		annotation SummarizationSetBy = Automatic
+
+	column HireDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 36a23ac9-4f10-4fe7-b491-ae1a72f4be2c
+		summarizeBy: none
+		sourceColumn: HireDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column LeaveDate
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: da43a0b6-03d2-45b9-83c3-43cb556b08a2
+		summarizeBy: none
+		sourceColumn: LeaveDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salary
+		dataType: int64
+		formatString: #,0
+		lineageTag: 70e91091-4627-4376-94f6-208b3fbfa01f
+		summarizeBy: sum
+		sourceColumn: Salary
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Employee Hierarchy'
+		lineageTag: 448dd4f3-7386-4ae2-9a5a-bb3e60c1bd3a
+
+		level Gender
+			lineageTag: 5bc30008-4979-4602-a701-4432ee5f5b88
+			column: Gender
+
+		level Name
+			lineageTag: 7c1cdd6b-7ccd-42c7-b8b0-cce66ada3eed
+			column: Name
+
+	partition Employee = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "employees.csv"), [Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"EmpID", Int64.Type}, {"Name", type text}, {"Gender", type text}, {"DeptID", Int64.Type}, {"HireDate", type date}, {"LeaveDate", type date}, {"Salary", Int64.Type}}, "en-US")
+				in
+					Typed
+
+	annotation PBI_ResultType = Table

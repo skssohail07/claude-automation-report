@@ -1,0 +1,93 @@
+table Date
+	dataCategory: Time
+	lineageTag: efdf5a0e-b872-487d-bec5-39dc59e5c4e7
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-mm-dd
+		lineageTag: 3c4b9896-5293-42ae-af78-2b0f3e6c6489
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 42bd5d08-6232-4b55-ae08-bc1930349a3a
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: eb26224f-dc91-4a69-9583-082d6980a8b0
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 91e96c8c-fcbe-498c-a698-833d0a41532f
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterNumber
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b16a4170-4dda-45bc-b982-1646691c259f
+		summarizeBy: none
+		sourceColumn: QuarterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 0e0fbae0-7f0f-4e28-9ea7-f65396ef1c16
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: QuarterNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Date Hierarchy'
+		lineageTag: 889a57a9-3b6a-4ea9-86ea-2c6f698c6937
+
+		level Year
+			lineageTag: 13749de3-bb85-40ba-91b6-58a87817f8e0
+			column: Year
+
+		level Quarter
+			lineageTag: 19dbf2b9-6e35-4900-9bf6-cb87b07529b3
+			column: Quarter
+
+		level MonthName
+			lineageTag: 8cfe051c-5f91-45d1-a699-9ac01f0c6c60
+			column: MonthName
+
+		level Date
+			lineageTag: f4d87593-2ad0-404f-b52a-6e7b5027f1e2
+			column: Date
+
+	partition Date = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataFolder & "dates.csv"), [Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"Date", type date}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"MonthName", type text}}, "en-US"),
+					AddQuarterNumber = Table.AddColumn(Typed, "QuarterNumber", each Date.QuarterOfYear([Date]), Int64.Type),
+					AddQuarter = Table.AddColumn(AddQuarterNumber, "Quarter", each "Q" & Text.From([QuarterNumber]), type text)
+				in
+					AddQuarter
+
+	annotation PBI_ResultType = Table
