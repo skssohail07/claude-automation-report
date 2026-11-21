@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "claude-automation report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a67d9384-9b00-472b-b54d-d357a251ca22"
+  }
+}
