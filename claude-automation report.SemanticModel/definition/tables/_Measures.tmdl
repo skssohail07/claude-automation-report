@@ -1,0 +1,133 @@
+table _Measures
+	lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c01
+
+	measure Headcount =
+			VAR _end = MAX ( 'Date'[Date] )
+			RETURN
+				CALCULATE (
+					COUNTROWS ( Employee ),
+					Employee[HireDate] <= _end,
+					ISBLANK ( Employee[LeaveDate] ) || Employee[LeaveDate] > _end
+				)
+		formatString: #,0
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c02
+
+	measure Hires =
+			VAR _start = MIN ( 'Date'[Date] )
+			VAR _end = MAX ( 'Date'[Date] )
+			RETURN
+				CALCULATE (
+					COUNTROWS ( Employee ),
+					Employee[HireDate] >= _start,
+					Employee[HireDate] <= _end
+				)
+		formatString: #,0
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c03
+
+	measure Leavers =
+			VAR _start = MIN ( 'Date'[Date] )
+			VAR _end = MAX ( 'Date'[Date] )
+			RETURN
+				CALCULATE (
+					COUNTROWS ( Employee ),
+					Employee[LeaveDate] >= _start,
+					Employee[LeaveDate] <= _end
+				)
+		formatString: #,0
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c04
+
+	measure 'Attrition %' = DIVIDE ( [Leavers], [Headcount] )
+		formatString: 0.0%
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c05
+
+	measure 'Female %' =
+			DIVIDE (
+				CALCULATE ( [Headcount], Employee[Gender] = "Female" ),
+				[Headcount]
+			)
+		formatString: 0.0%
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c06
+
+	measure 'Avg Salary' =
+			VAR _end = MAX ( 'Date'[Date] )
+			RETURN
+				CALCULATE (
+					AVERAGE ( Employee[Salary] ),
+					Employee[HireDate] <= _end,
+					ISBLANK ( Employee[LeaveDate] ) || Employee[LeaveDate] > _end
+				)
+		formatString: #,0
+		displayFolder: Emp
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c07
+
+	measure Budget = SUM ( Department[Budget] )
+		formatString: #,0
+		displayFolder: Dept
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c08
+
+	/// Annual salary cost of current headcount as a share of department budget.
+	measure 'Budget Used %' =
+			VAR _end = MAX ( 'Date'[Date] )
+			VAR _salaryCost =
+				CALCULATE (
+					SUM ( Employee[Salary] ),
+					Employee[HireDate] <= _end,
+					ISBLANK ( Employee[LeaveDate] ) || Employee[LeaveDate] > _end
+				)
+			RETURN
+				DIVIDE ( _salaryCost, [Budget] )
+		formatString: 0.0%
+		displayFolder: Dept
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c09
+
+	measure 'HR Cases' = COUNTROWS ( HRCase )
+		formatString: #,0
+		displayFolder: HR (OWN)
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c10
+
+	measure 'Avg Days to Close' = AVERAGE ( HRCase[DaysToClose] )
+		formatString: 0.0
+		displayFolder: HR (OWN)
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c11
+
+	measure 'SLA Met %' = AVERAGE ( HRCase[OnTime] )
+		formatString: 0.0%
+		displayFolder: HR (OWN)
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c12
+
+	measure 'Staff per HR Person' =
+			VAR _allStaff =
+				CALCULATE ( [Headcount], REMOVEFILTERS ( Department ), REMOVEFILTERS ( Employee ) )
+			VAR _hrStaff =
+				CALCULATE (
+					[Headcount],
+					REMOVEFILTERS ( Department ),
+					REMOVEFILTERS ( Employee ),
+					Department[DeptName] = "Human Resources"
+				)
+			RETURN
+				DIVIDE ( _allStaff, _hrStaff )
+		formatString: 0.0
+		displayFolder: HR (OWN)
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c13
+
+	column Placeholder
+		dataType: int64
+		isHidden
+		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c14
+		summarizeBy: none
+		sourceColumn: [Placeholder]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW ( "Placeholder", 1 )
+
+	annotation PBI_ResultType = Table
+

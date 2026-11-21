@@ -8,6 +8,7 @@ model Model
 
 annotation PBI_ProTooling = ["DevMode"]
 
+ref table _Measures
 ref table Department
 ref table Employee
 ref table Date
