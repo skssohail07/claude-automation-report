@@ -4,10 +4,10 @@
   "position": {
     "x": 645.0,
     "y": 90,
-    "z": 5000,
+    "z": 9000,
     "height": 100,
     "width": 302.5,
-    "tabOrder": 5000
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "card",
@@ -142,6 +142,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Annual salary cost of current headcount as a share of budget, orange above 100%.'"
                 }
               }
             }

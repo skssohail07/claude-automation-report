@@ -4,10 +4,10 @@
   "position": {
     "x": 1020.0,
     "y": 90,
-    "z": 8000,
+    "z": 12000,
     "height": 100,
     "width": 240.0,
-    "tabOrder": 8000
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "card",
@@ -76,6 +76,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Share of current headcount who are female.'"
                 }
               }
             }

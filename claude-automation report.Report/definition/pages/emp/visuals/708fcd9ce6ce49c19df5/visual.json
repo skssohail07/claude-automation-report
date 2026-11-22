@@ -4,10 +4,10 @@
   "position": {
     "x": 270.0,
     "y": 90,
-    "z": 5000,
+    "z": 9000,
     "height": 100,
     "width": 240.0,
-    "tabOrder": 5000
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "card",
@@ -76,6 +76,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Employees whose hire date falls in the selected period.'"
                 }
               }
             }

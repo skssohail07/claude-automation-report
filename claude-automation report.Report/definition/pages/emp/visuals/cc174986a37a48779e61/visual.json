@@ -4,10 +4,10 @@
   "position": {
     "x": 770.0,
     "y": 90,
-    "z": 7000,
+    "z": 11000,
     "height": 100,
     "width": 240.0,
-    "tabOrder": 7000
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "card",
@@ -193,6 +193,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Leavers divided by headcount: red above 15%, green below 10%.'"
                 }
               }
             }

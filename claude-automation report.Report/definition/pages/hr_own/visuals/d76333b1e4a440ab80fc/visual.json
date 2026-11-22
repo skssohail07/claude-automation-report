@@ -4,10 +4,10 @@
   "position": {
     "x": 20.0,
     "y": 90,
-    "z": 4000,
+    "z": 8000,
     "height": 100,
     "width": 302.5,
-    "tabOrder": 4000
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "card",
@@ -76,6 +76,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Number of HR requests opened in the selected period.'"
                 }
               }
             }

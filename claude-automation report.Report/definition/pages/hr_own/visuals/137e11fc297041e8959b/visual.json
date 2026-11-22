@@ -4,10 +4,10 @@
   "position": {
     "x": 645.0,
     "y": 90,
-    "z": 6000,
+    "z": 10000,
     "height": 100,
     "width": 302.5,
-    "tabOrder": 6000
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "card",
@@ -193,6 +193,48 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showTooltipButton": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeaderTooltip": [
+        {
+          "properties": {
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Text'"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Share of HR requests closed within the 5-day target: green 90%+, orange 75-90%, red below 75%.'"
                 }
               }
             }
