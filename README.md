@@ -20,8 +20,8 @@ Four CSV files in `Data/csv/`, generated with a fixed seed so they are the same 
 |------|------|---------|
 | `departments.csv` | 5 | DeptID, DeptName, Budget |
 | `employees.csv` | 100 | EmpID, Name, Gender, DeptID, HireDate, LeaveDate (blank if still employed), Salary |
-| `dates.csv` | 365 | Date, Year, Month, MonthName (every day of 2025) |
-| `hr_cases.csv` | 100 | CaseID, DeptID, CaseType, OpenDate, DaysToClose, OnTime (1 if closed within 5 days) |
+| `dates.csv` | 731 | Date, Year, Month, MonthName (every day of 2024 and 2025) |
+| `hr_cases.csv` | 200 | CaseID, DeptID, CaseType, OpenDate, DaysToClose, OnTime (1 if closed within 5 days) |
 
 In the model these load as the `Department`, `Employee`, `Date` and `HRCase` tables. All measures live in a separate `_Measures` table.
 

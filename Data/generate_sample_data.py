@@ -15,7 +15,8 @@ random.seed(42)
 OUT = Path(__file__).resolve().parent / "csv"
 OUT.mkdir(parents=True, exist_ok=True)
 
-YEAR_START = date(2025, 1, 1)
+# Reporting period covered by dates, leave dates and HR cases
+YEAR_START = date(2024, 1, 1)
 YEAR_END = date(2025, 12, 31)
 
 
@@ -69,7 +70,7 @@ for emp_id in range(1, 101):
 write("employees.csv",
       ["EmpID", "Name", "Gender", "DeptID", "HireDate", "LeaveDate", "Salary"], employees)
 
-# 3. Dates: every day of 2025
+# 3. Dates: every day of the reporting period (2024-2025)
 dates = []
 d = YEAR_START
 while d <= YEAR_END:
@@ -81,7 +82,7 @@ write("dates.csv", ["Date", "Year", "Month", "MonthName"], dates)
 case_types = ["Payroll", "Leave", "Benefits", "Grievance", "Onboarding", "Policy"]
 SLA_DAYS = 5
 cases = []
-for case_id in range(1, 101):
+for case_id in range(1, 201):  # about 100 per year
     days_to_close = random.randint(1, 12)
     cases.append([
         case_id,
