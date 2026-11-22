@@ -41,7 +41,8 @@
                 }
               },
               "queryRef": "Department.DeptName",
-              "nativeQueryRef": "DeptName"
+              "nativeQueryRef": "DeptName",
+              "displayName": "Department"
             },
             {
               "field": {
@@ -91,6 +92,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Employees'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "Department.DeptName",
-              "nativeQueryRef": "DeptName"
+              "nativeQueryRef": "DeptName",
+              "displayName": "Department"
             }
           ]
         }
