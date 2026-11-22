@@ -4,10 +4,10 @@
   "position": {
     "x": 645.0,
     "y": 455.0,
-    "z": 14000,
+    "z": 13000,
     "height": 245.0,
     "width": 615.0,
-    "tabOrder": 14000
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -121,9 +121,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "_Measures.SLA Met %"
           }
         }
       ],

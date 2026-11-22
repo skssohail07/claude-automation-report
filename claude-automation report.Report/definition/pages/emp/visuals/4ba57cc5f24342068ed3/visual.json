@@ -5,7 +5,7 @@
     "x": 20,
     "y": 20,
     "z": 1000,
-    "height": 32,
+    "height": 60,
     "width": 420,
     "tabOrder": 1000
   },
@@ -21,8 +21,22 @@
                   {
                     "value": "Employee Overview",
                     "textStyle": {
-                      "fontSize": "20pt",
-                      "fontWeight": "bold"
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "18pt",
+                      "fontWeight": "bold",
+                      "color": "#1F3A5F"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Headcount, hiring and attrition at the end of the selected period.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "10pt",
+                      "color": "#6C757D"
                     }
                   }
                 ]

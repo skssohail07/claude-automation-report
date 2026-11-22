@@ -4,10 +4,10 @@
   "position": {
     "x": 20.0,
     "y": 200,
-    "z": 11000,
+    "z": 10000,
     "height": 245.0,
     "width": 615.0,
-    "tabOrder": 11000
+    "tabOrder": 10000
   },
   "visual": {
     "visualType": "lineClusteredColumnComboChart",
@@ -126,6 +126,21 @@
     },
     "objects": {
       "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#6C757D'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         {
           "properties": {
             "fill": {

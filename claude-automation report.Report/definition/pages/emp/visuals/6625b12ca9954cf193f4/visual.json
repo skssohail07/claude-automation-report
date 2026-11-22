@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 200,
-    "z": 13000,
+    "z": 12000,
     "height": 245.0,
     "width": 815,
-    "tabOrder": 13000
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "lineChart",
@@ -120,9 +120,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "_Measures.Headcount"
           }
         }
       ],
@@ -160,6 +157,13 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }

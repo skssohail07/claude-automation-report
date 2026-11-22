@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 200,
-    "z": 12000,
+    "z": 11000,
     "height": 245.0,
     "width": 1240,
-    "tabOrder": 12000
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -120,9 +120,6 @@
                 }
               }
             }
-          },
-          "selector": {
-            "metadata": "_Measures.HR Cases"
           }
         }
       ],
