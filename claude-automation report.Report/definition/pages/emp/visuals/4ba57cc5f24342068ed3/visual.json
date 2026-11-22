@@ -3,10 +3,10 @@
   "name": "4ba57cc5f24342068ed3",
   "position": {
     "x": 20,
-    "y": 15,
+    "y": 20,
     "z": 1000,
-    "height": 50,
-    "width": 700,
+    "height": 60,
+    "width": 420,
     "tabOrder": 1000
   },
   "visual": {
