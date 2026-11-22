@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "6b1331a143d340859f4e",
+  "position": {
+    "x": 965.0,
+    "y": 85,
+    "z": 7000,
+    "height": 90,
+    "width": 295.0,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Staff per HR Person"
+                }
+              },
+              "queryRef": "_Measures.Staff per HR Person",
+              "nativeQueryRef": "Staff per HR Person"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

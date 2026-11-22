@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "ba28df3678ca46e797f7",
+  "position": {
+    "x": 335.0,
+    "y": 85,
+    "z": 5000,
+    "height": 90,
+    "width": 295.0,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg Days to Close"
+                }
+              },
+              "queryRef": "_Measures.Avg Days to Close",
+              "nativeQueryRef": "Avg Days to Close"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
