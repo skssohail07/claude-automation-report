@@ -69,6 +69,26 @@ for emp_id in range(1, 101):
         leave,
         int(salary),
     ])
+# Historical leavers: 1-2 per year for 2018-2023, added as extra employees so the
+# 2024-2025 figures above are unchanged. A separate generator keeps the main random
+# stream (and therefore hr_cases.csv) identical.
+hist = random.Random(42)
+for leave_year in range(2018, 2024):
+    for _ in range(hist.randint(1, 2)):
+        earliest_leave = max(date(leave_year, 1, 1), date(2018, 1, 1) + timedelta(days=30))
+        leave_day = earliest_leave + timedelta(days=hist.randint(0, (date(leave_year, 12, 31) - earliest_leave).days))
+        hire = date(2018, 1, 1) + timedelta(days=hist.randint(0, (leave_day - timedelta(days=30) - date(2018, 1, 1)).days))
+        dept_id = hist.choices([1, 2, 3, 4, 5], weights=[35, 25, 12, 18, 10])[0]
+        employees.append([
+            len(employees) + 1,
+            f"{hist.choice(first_names)} {hist.choice(last_names)}",
+            hist.choice(["Female", "Male"]),
+            dept_id,
+            hire.isoformat(),
+            leave_day.isoformat(),
+            int(round(base_salary[dept_id] * hist.uniform(0.8, 1.4), -2)),
+        ])
+
 write("employees.csv",
       ["EmpID", "Name", "Gender", "DeptID", "HireDate", "LeaveDate", "Salary"], employees)
 
