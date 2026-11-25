@@ -18,6 +18,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 # Reporting period covered by dates, leave dates and HR cases
 YEAR_START = date(2024, 1, 1)
 YEAR_END = date(2025, 12, 31)
+# The Date table starts earlier so it covers every hire date (hires begin in 2018)
+DATES_START = date(2018, 1, 1)
 
 
 def write(name, header, rows):
@@ -70,9 +72,9 @@ for emp_id in range(1, 101):
 write("employees.csv",
       ["EmpID", "Name", "Gender", "DeptID", "HireDate", "LeaveDate", "Salary"], employees)
 
-# 3. Dates: every day of the reporting period (2024-2025)
+# 3. Dates: every day from 2018 to the end of 2025
 dates = []
-d = YEAR_START
+d = DATES_START
 while d <= YEAR_END:
     dates.append([d.isoformat(), d.year, d.month, calendar.month_name[d.month]])
     d += timedelta(days=1)
