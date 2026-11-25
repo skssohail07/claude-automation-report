@@ -6,7 +6,7 @@ An HR dashboard built as a Power BI Project (PBIP). The semantic model is TMDL a
 
 | Page | What it answers |
 |------|-----------------|
-| **Emp** | How many people work here and how that is changing: Headcount, Hires, Leavers, Attrition %, Female %, headcount by month, gender split and an employee list. |
+| **Emp** | How many people work here and how that is changing: Headcount, Hires, Leavers, Attrition %, Female %, total hires by year, gender split and an employee list. |
 | **Dept** | How each department is staffed and funded: Headcount, Budget, Budget Used % (salary cost against budget), Avg Salary, Attrition % by department and a department summary table. |
 | **HR (OWN)** | How well the HR function itself is performing: HR Cases, Avg Days to Close, SLA Met %, Staff per HR Person, cases by month and SLA by case type. |
 

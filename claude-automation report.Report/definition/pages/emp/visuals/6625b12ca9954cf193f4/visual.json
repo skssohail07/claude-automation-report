@@ -10,7 +10,7 @@
     "tabOrder": 12000
   },
   "visual": {
-    "visualType": "lineChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -23,11 +23,11 @@
                       "Entity": "Date"
                     }
                   },
-                  "Property": "MonthName"
+                  "Property": "Year"
                 }
               },
-              "queryRef": "Date.MonthName",
-              "nativeQueryRef": "MonthName"
+              "queryRef": "Date.Year",
+              "nativeQueryRef": "Year"
             }
           ]
         },
@@ -41,11 +41,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Headcount"
+                  "Property": "Hires"
                 }
               },
-              "queryRef": "_Measures.Headcount",
-              "nativeQueryRef": "Headcount"
+              "queryRef": "_Measures.Hires",
+              "nativeQueryRef": "Hires"
             }
           ]
         }
@@ -60,7 +60,7 @@
                     "Entity": "Date"
                   }
                 },
-                "Property": "MonthName"
+                "Property": "Year"
               }
             },
             "direction": "Ascending"
@@ -84,7 +84,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Headcount by Month'"
+                  "Value": "'Total Hires by Year'"
                 }
               }
             }
@@ -114,9 +114,22 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1F3A5F'"
+                      "Value": "'#2A9D8F'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }
@@ -126,14 +139,14 @@
       "valueAxis": [
         {
           "properties": {
-            "gridlineShow": {
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
             },
-            "showAxisTitle": {
+            "gridlineShow": {
               "expr": {
                 "Literal": {
                   "Value": "false"
@@ -150,20 +163,6 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
-                }
-              }
-            },
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
                 }
               }
             }
