@@ -1,8 +1,8 @@
 EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
-1,Hiroshi Khan,Male,3,2018-04-13,,71000
+1,Hiroshi Khan,Male,3,2018-04-13,2018-11-18,71000
 2,Isha Mensah,Female,3,2024-02-12,2025-05-19,61400
 3,Leila Mehta,Female,2,2018-04-19,,86100
-4,Chloe Smith,Female,2,2018-01-27,,62700
+4,Chloe Smith,Female,2,2018-01-27,2021-02-17,62700
 5,Dmitri Rao,Male,1,2021-10-10,2025-01-24,81500
 6,Lucas Mensah,Male,4,2023-02-25,,83000
 7,Pedro Santos,Male,4,2024-12-08,,61000
@@ -14,13 +14,13 @@ EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
 13,Isha Costa,Female,1,2024-05-12,,93900
 14,Sofia Andersen,Female,1,2019-07-26,,108000
 15,Carlos Johansson,Male,4,2022-06-24,,83900
-16,Liam Park,Male,1,2018-07-12,,84700
+16,Liam Park,Male,1,2018-07-12,2019-02-22,84700
 17,Chloe Garcia,Female,2,2022-04-26,,97800
 18,Rahul Banerjee,Male,3,2019-04-15,,84200
 19,Ibrahim Walker,Male,1,2022-11-16,,76200
 20,Anaya Diallo,Female,2,2019-03-12,,68500
 21,Ibrahim Taylor,Male,4,2024-01-19,,81200
-22,Oliver Suzuki,Male,2,2019-04-04,,92900
+22,Oliver Suzuki,Male,2,2019-04-04,2019-06-30,92900
 23,Elena Banerjee,Female,1,2024-05-12,,80900
 24,Aisha Reddy,Female,1,2023-05-01,,85400
 25,Jamal Tanaka,Male,3,2022-06-23,,89200
@@ -33,7 +33,7 @@ EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
 32,Noor Santos,Female,1,2023-03-10,,128600
 33,Priya Cruz,Female,1,2024-01-24,,131200
 34,Ingrid Gupta,Female,2,2020-05-25,,93900
-35,Noah Malhotra,Male,5,2020-12-22,,82600
+35,Noah Malhotra,Male,5,2020-12-22,2022-09-16,82600
 36,Tariq Fischer,Male,1,2021-04-30,,79300
 37,Wei Hughes,Male,1,2024-07-20,,128400
 38,Andre Chen,Male,4,2018-10-08,,72300
@@ -61,7 +61,7 @@ EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
 60,Hiroshi Johansson,Male,2,2018-10-14,,94700
 61,Noah Chatterjee,Male,3,2021-05-15,,90000
 62,Lucas Nguyen,Male,2,2020-02-25,,95500
-63,Tariq Abdi,Male,2,2018-01-02,,64800
+63,Tariq Abdi,Male,2,2018-01-02,2020-08-04,64800
 64,Sven Singh,Male,2,2020-05-25,,89300
 65,Chloe Cohen,Female,1,2025-06-12,,95100
 66,Meera Mahmoud,Female,1,2020-03-26,2024-02-17,90000
@@ -71,7 +71,7 @@ EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
 70,Ethan Hughes,Male,1,2023-03-19,,132300
 71,Kwame Nguyen,Male,4,2024-02-23,,53700
 72,Isabella Kowalski,Female,4,2025-02-24,,76000
-73,Rohan Li,Male,1,2018-11-14,,89400
+73,Rohan Li,Male,1,2018-11-14,2023-04-12,89400
 74,Kenji Reyes,Male,1,2020-08-05,,84700
 75,Carlos Martinez,Male,2,2024-02-01,,58600
 76,Aisha Joshi,Female,4,2024-06-16,,48200
@@ -99,10 +99,3 @@ EmpID,Name,Gender,DeptID,HireDate,LeaveDate,Salary
 98,Lucas Hughes,Male,2,2023-12-15,,97900
 99,Liam Diallo,Male,1,2020-10-26,,117100
 100,Leila Abdi,Female,1,2023-06-07,,109600
-101,Carlos Tanaka,Male,1,2018-01-12,2018-02-12,114600
-102,Priya Malhotra,Female,1,2019-03-09,2019-10-30,104800
-103,Hana Taylor,Female,3,2018-07-23,2020-10-14,86500
-104,Noor Sharma,Female,1,2020-05-15,2021-03-23,81800
-105,Omar Hughes,Male,4,2020-01-06,2022-02-19,67300
-106,Omar Joshi,Male,2,2018-06-11,2022-07-13,85600
-107,Kabir Diallo,Male,4,2020-07-22,2023-12-05,61700
