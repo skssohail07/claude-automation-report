@@ -45,10 +45,56 @@ departments = [
 write("departments.csv", ["DeptID", "DeptName", "Budget"], departments)
 
 # 2. Employees
-first_names = ["Aarav", "Anaya", "Rohan", "Isha", "Kabir", "Meera", "Arjun", "Saanvi",
-               "Liam", "Emma", "Noah", "Olivia", "Ethan", "Ava", "Priya", "Rahul"]
-last_names = ["Sharma", "Iyer", "Nair", "Singh", "Patel", "Gupta", "Rao", "Khan",
-              "Smith", "Brown", "Taylor", "Wilson"]
+# 30 female + 30 male first names; the gender of every first name is fixed, so a
+# name always maps to the same gender.
+female_first = [
+    "Anaya", "Isha", "Meera", "Saanvi", "Emma", "Olivia", "Ava", "Priya",
+    "Fatima", "Aisha", "Yuki", "Mei", "Sofia", "Isabella", "Chloe", "Amara",
+    "Zainab", "Leila", "Ananya", "Kavya", "Sakura", "Elena", "Nadia", "Camila",
+    "Ingrid", "Chiara", "Thandiwe", "Hana", "Ji-woo", "Noor",
+]
+male_first = [
+    "Aarav", "Rohan", "Kabir", "Arjun", "Liam", "Noah", "Ethan", "Rahul",
+    "Mohammed", "Wei", "Hiroshi", "Carlos", "Mateo", "Lucas", "Oliver", "Kwame",
+    "Omar", "Dmitri", "Jamal", "Sven", "Diego", "Ibrahim", "Hassan", "Tariq",
+    "Rafael", "Andre", "Kenji", "Pedro", "Vikram", "Samuel",
+]
+first_gender = {n: "Female" for n in female_first} | {n: "Male" for n in male_first}
+first_names = female_first + male_first
+last_names = [
+    "Sharma", "Iyer", "Nair", "Singh", "Patel", "Gupta", "Rao", "Khan", "Smith", "Brown",
+    "Taylor", "Wilson", "Kapoor", "Reddy", "Chatterjee", "Mehta", "Joshi", "Banerjee",
+    "Malhotra", "Verma", "Nguyen", "Tanaka", "Kim", "Chen", "Wang", "Li", "Park", "Suzuki",
+    "Garcia", "Martinez", "Rodriguez", "Lopez", "Hernandez", "Silva", "Santos", "Costa",
+    "Rossi", "Ferrari", "Muller", "Schmidt", "Fischer", "Kowalski", "Ivanov", "Petrov",
+    "Johansson", "Andersen", "Okafor", "Mensah", "Diallo", "Abdi", "Haddad", "Mahmoud",
+    "Cohen", "Levy", "Murphy", "Walker", "Hughes", "Cooper", "Reyes", "Cruz",
+]
+assert len(first_names) == 60 and len(set(first_names)) == 60
+assert len(last_names) == 60 and len(set(last_names)) == 60
+
+# Names come from their own generator so they never disturb the main random stream.
+name_rng = random.Random(42)
+used_names = set()
+
+
+def new_person():
+    """Return a (full name, gender) pair that has not been used before."""
+    while True:
+        first, last = name_rng.choice(first_names), name_rng.choice(last_names)
+        if f"{first} {last}" not in used_names:
+            used_names.add(f"{first} {last}")
+            return f"{first} {last}", first_gender[first]
+
+
+def legacy_name_draws(rng):
+    """Consume the random numbers the old name/gender code used (16 first names,
+    12 last names, 2 genders), so every other column and hr_cases.csv stay unchanged."""
+    rng.choice(range(16))
+    rng.choice(range(12))
+    rng.choice(("Female", "Male"))
+
+
 base_salary = {1: 95000, 2: 70000, 3: 75000, 4: 60000, 5: 65000}
 
 employees = []
@@ -60,10 +106,12 @@ for emp_id in range(1, 101):
         leave_day = random_day(max(hire + timedelta(days=30), YEAR_START), YEAR_END)
         leave = leave_day.isoformat()
     salary = round(base_salary[dept_id] * random.uniform(0.8, 1.4), -2)
+    legacy_name_draws(random)
+    name, gender = new_person()
     employees.append([
         emp_id,
-        f"{random.choice(first_names)} {random.choice(last_names)}",
-        random.choice(["Female", "Male"]),
+        name,
+        gender,
         dept_id,
         hire.isoformat(),
         leave,
@@ -79,10 +127,12 @@ for leave_year in range(2018, 2024):
         leave_day = earliest_leave + timedelta(days=hist.randint(0, (date(leave_year, 12, 31) - earliest_leave).days))
         hire = date(2018, 1, 1) + timedelta(days=hist.randint(0, (leave_day - timedelta(days=30) - date(2018, 1, 1)).days))
         dept_id = hist.choices([1, 2, 3, 4, 5], weights=[35, 25, 12, 18, 10])[0]
+        legacy_name_draws(hist)
+        name, gender = new_person()
         employees.append([
             len(employees) + 1,
-            f"{hist.choice(first_names)} {hist.choice(last_names)}",
-            hist.choice(["Female", "Male"]),
+            name,
+            gender,
             dept_id,
             hire.isoformat(),
             leave_day.isoformat(),
