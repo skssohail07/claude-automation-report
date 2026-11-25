@@ -14,12 +14,14 @@ table _Measures
 		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c02
 
 	measure Hires =
-			COUNTROWS (
-				FILTER (
-					Employee,
-					YEAR ( Employee[HireDate] ) = SELECTEDVALUE ( 'Date'[Year] )
+			VAR _start = MIN ( 'Date'[Date] )
+			VAR _end   = MAX ( 'Date'[Date] )
+			RETURN
+				CALCULATE (
+					COUNTROWS ( Employee ),
+					Employee[HireDate] >= _start,
+					Employee[HireDate] <= _end
 				)
-			)
 		formatString: #,0
 		displayFolder: Emp
 		lineageTag: 5d0c7a1e-8b2f-4c3a-9e61-2f4b7d8a1c03
